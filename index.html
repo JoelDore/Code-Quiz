@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaScript Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Assets/CSS/style.css">
+    <script defer src="Assets/JS/script.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <a href="./highscores.html">High Scores</a>
+        <div>Time Remaining: <span id="timer">0</span></div>
+    </div>
+
+    <div id="start-page">
+        <h1>Coding Quiz</h1>
+        <p>Instructions: Lorem, ipsum dolor sit amet consectetur adipisicing elit Molestias consequuntur consequatur
+            tenetur laborum placeat iste quae excepturi enim adipisci accusamus distinctio, delectus reprehenderit dicta
+            quidem, necessitatibus in asperiores, eaque debitis?</p>
+        <button id="start" class="btn">Start</button>
+    </div>
+    ---
+    <div id="question-container" class="hide">
+        <h2 id="question">1. | What is the answer to this question?</h2>
+        <button id="answer-1" class="btn">Answer 1</button>
+        <button id="answer-2" class="btn">Answer 2</button>
+        <button id="answer-3" class="btn">Answer 3</button>
+        <button id="answer-4" class="btn">Answer 4</button>
+    </div>
+    ---
+    <div id="results-page" class="hide">
+        <h2>All done!</h2>
+        <p>Your final score is <span id="final-score"></span></p>
+        <form>
+            <label for="initials">Enter your initials:</label>
+            <input type="text" id="initials">
+            <button id="submit-highscore" class="btn" onclick="window.location.href='./highscores.html'">Submit</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
