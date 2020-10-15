@@ -13,23 +13,24 @@ body {
     align-items: center;
     background-color: hsl(180, 100%, 30%);
 }
-
+/* Link to high scores & Timer aligned at header ends */
 .header {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 50px;
+    padding: 20px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
-    position: fixed top;
     font-weight: bold;
 }
-
+/* Hover selector for high scores link */
 a:hover {color: darkgray;}
 
+/* For navigating through questions */
 .hide {
     display: none;
 }
 
+/* Main content on centered white card */
 .main {
     justify-content: center;
     align-items: center;
@@ -42,6 +43,7 @@ a:hover {color: darkgray;}
     box-shadow: 0 3px 10px 2px;
 }
 
+/* Button stylings, hover effect */
 .btn {
     border: 3px solid hsl(200, 100%, 25%);
     border-radius: 5px;
@@ -50,23 +52,31 @@ a:hover {color: darkgray;}
     margin: 15px;
     color: white;
     font-size: large;
-}
-
-.btn:hover {
-    border-width: 1px;
+    width: 40%;
 }
 
 .btn.submit-btn {
-    padding: 5px 10px;
+    border-width: 2px;
+    padding: 5px;
     font-size: medium;
+    width: fit-content;
 }
 
+.btn:hover {
+    background-color: hsl(200, 50%, 50%);
+}
+/* Correct answers revealed in green */
 .btn.correct {
     background-color: hsl(120, 100%, 30%);
     border-color: hsl(120, 100%, 20%);
 }
-
+/* Incorrect answers revealed in red */
 .btn.wrong {
     background-color: hsl(0, 100%, 30%);
     border-color: hsl(0, 100%, 20%);
+}
+
+/* Buttons arranged in column on xs devices */
+@media screen and (max-width: 576px) {
+    .btn {width: 80%;}
 }
