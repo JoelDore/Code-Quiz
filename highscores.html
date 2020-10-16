@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High Scores</title>
+    <title>JavaScript Quiz | High Scores</title>
     <link rel="stylesheet" href="Assets/CSS/reset.css">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Assets/CSS/style.css">
+
+    <script defer src="Assets/JS/questions.js"></script>
+    <script defer src="Assets/JS/script.js"></script>
 </head>
 
 <body>
@@ -17,7 +20,9 @@
     </div>
     <div class="main">
         <h1>High Scores</h1>
-        <div></div>
+        <b onclick="populateHighScores()">Populate</b>
+        <div id="highscores-list">
+        </div>
         <button class="btn" onclick="window.location.href='./index.html'">Restart</button>
     </div>
 
