@@ -1,4 +1,10 @@
 const timerEl = document.getElementById('timer');
+const questionEl = document.getElementById('question');
+const answerOne = document.getElementById('answer-1');
+const answerTwo = document.getElementById('answer-2');
+const answerThree = document.getElementById('answer-3');
+const answerFour = document.getElementById('answer-4');
+
 let currentScore = 0;
 let currentQ = 0;
 
@@ -9,14 +15,15 @@ function changeDiv(curr, next) {
 };
 
 // Handle Start button click
-function startGame() {
+function startGame() { // Handle Start button click
     changeDiv('start-page', 'question-container');
+    nextQuestion();
+    currentQ = 0; // reset initial increment in nextQuestion()
     startTimer();
 };
 
 // Timer function
 function startTimer() {
-    let secondsLeft = 60;
     timerEl.textContent = secondsLeft;
     let timerInterval = setInterval(
         () => {
@@ -30,7 +37,19 @@ function startTimer() {
 };
 
 function nextQuestion() {
-    // Populate question-container w/ next questionBank[currentQ]
+    // If currently on last question, end the game
+    if (currentQ = questionBank.length - 1) {
+        endGame();
+    } else {
+        // Otherwise populate question-container div
+        questionEl.textContent = questionBank[currentQ].question;
+        answerOne.textContent = questionBank[currentQ].answersArray[currentQ].answer;
+        answerTwo.textContent = questionBank[currentQ].answersArray[currentQ].answer;
+        answerThree.textContent = questionBank[currentQ].answersArray[currentQ].answer;
+        answerFour.textContent = questionBank[currentQ].answersArray[currentQ].answer;
+        // and increment currentQ
+        currentQ++;
+    }
 }
 
 function handleAnswerClick(event) {
@@ -41,7 +60,7 @@ function handleAnswerClick(event) {
     // else 
     // // secondsLeft -=10;
     // // event.target.classList.add(.wrong)
-    // setTimeout(-move to next question-, 500)
+    // setTimeout(nextQuestion(), 500)
 };
 
 function getCorrectAnswer(currentQ) {
