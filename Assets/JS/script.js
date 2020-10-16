@@ -5,8 +5,9 @@ const answerTwo = document.getElementById('answer-2');
 const answerThree = document.getElementById('answer-3');
 const answerFour = document.getElementById('answer-4');
 
+let secondsLeft = 60;
 let currentScore = 0;
-let currentQ = 0;
+let currentQ = -1;
 
 // Move to next div # from current div #
 function changeDiv(curr, next) {
@@ -18,7 +19,6 @@ function changeDiv(curr, next) {
 function startGame() { // Handle Start button click
     changeDiv('start-page', 'question-container');
     nextQuestion();
-    currentQ = 0; // reset initial increment in nextQuestion()
     startTimer();
 };
 
@@ -37,30 +37,44 @@ function startTimer() {
 };
 
 function nextQuestion() {
-    // If currently on last question, end the game
-    if (currentQ = questionBank.length - 1) {
+    currentQ++;
+    // If there are no more questions, end the game
+    if (currentQ === questionBank.length) {
+        secondsLeft = 0;
         endGame();
     } else {
-        // Otherwise populate question-container div
+        // Otherwise populate questionEl
         questionEl.textContent = questionBank[currentQ].question;
-        answerOne.textContent = questionBank[currentQ].answersArray[currentQ].answer;
-        answerTwo.textContent = questionBank[currentQ].answersArray[currentQ].answer;
-        answerThree.textContent = questionBank[currentQ].answersArray[currentQ].answer;
-        answerFour.textContent = questionBank[currentQ].answersArray[currentQ].answer;
-        // and increment currentQ
-        currentQ++;
-    }
-}
+        // and populate answer buttons
+        let arr = [answerOne, answerTwo, answerThree, answerFour];
+        let i = 0;
+        arr.forEach(element => {
+            element.textContent = questionBank[currentQ].answersArray[i].answer;
+            i++
+        }, i);
+    };
+};
 
+// When user clicks an answer button
 function handleAnswerClick(event) {
-    // let correctAnswer = getCorrectAnswer(currentQ);
-    // if event.target.textContent===correctAnswer,
-    // // currentScore += 10;
-    // // event.target.classList.add(.correct)
-    // else 
-    // // secondsLeft -=10;
-    // // event.target.classList.add(.wrong)
-    // setTimeout(nextQuestion(), 500)
+    // Get the correct answer string
+    let correctAnswer = getCorrectAnswer(currentQ);
+    // Compare to user click
+    if (event.target.textContent === correctAnswer) {
+        currentScore += 10;
+        // color indicates correct choice
+        event.target.classList.add('correct')
+    } else {
+        secondsLeft -= 10;
+        // color indicates wrong choice
+        event.target.classList.add('wrong')
+    }
+    // Wait 0.5 sec, reset btn color, go to next question
+    setTimeout(
+        () => {
+            event.target.className = 'btn';
+            nextQuestion();
+        }, 500);
 };
 
 function getCorrectAnswer(currentQ) {
@@ -75,9 +89,10 @@ function getCorrectAnswer(currentQ) {
 };
 
 function endGame() {
+    timerEl.textContent = 0;
     // Log currentScore in #final-score text
     // set currentScore = 0;
-    // changeDiv('question-container', 'results-page');
+    changeDiv('question-container', 'results-page');
 }
 
 
