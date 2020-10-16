@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="Assets/CSS/style.css">
 
     <script defer src="Assets/JS/questions.js"></script>
+    <script defer src="Assets/JS/script.js"></script>
 </head>
 
 <body>
@@ -19,15 +20,14 @@
         <div>Time Remaining: <span id="timer">0</span></div>
     </div>
     <div class="main">
-        <div id="start-page" class="hide">
+        <div id="start-page">
             <h1>Coding Quiz</h1>
-            <p>Instructions: Lorem, ipsum dolor sit amet consectetur adipisicing elit Molestias consequuntur
-                consequatur
-                tenetur laborum placeat iste quae excepturi enim adipisci accusamus distinctio, delectus
-                reprehenderit?</p>
-            <button id="start" class="btn">Start</button>
+            <p><strong>Instructions: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit Molestias
+                consequuntur consequatur tenetur laborum placeat iste quae excepturi enim adipisci accusamus distinctio,
+                delectus reprehenderit?</p>
+            <button id="start" class="btn" onclick="startGame()">Start</button>
         </div>
-        <div id="question-container">
+        <div id="question-container" class="hide">
             <h2 id="question">1. What is the answer to this question?</h2>
             <button id="answer-1" class="btn">Answer 1</button>
             <button id="answer-2" class="btn">Answer 2</button>
