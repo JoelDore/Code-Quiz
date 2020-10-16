@@ -27,13 +27,15 @@
                 delectus reprehenderit?</p>
             <button id="start" class="btn" onclick="startGame()">Start</button>
         </div>
+
         <div id="question-container" class="hide">
-            <h2 id="question">1. What is the answer to this question?</h2>
-            <button id="answer-1" class="btn">Answer 1</button>
-            <button id="answer-2" class="btn">Answer 2</button>
-            <button id="answer-3" class="btn">Answer 3</button>
-            <button id="answer-4" class="btn">Answer 4</button>
+            <h2 id="question"></h2>
+            <button id="answer-1" class="btn" onclick="handleAnswerClick(event)"></button>
+            <button id="answer-2" class="btn" onclick="handleAnswerClick(event)"></button>
+            <button id="answer-3" class="btn" onclick="handleAnswerClick(event)"></button>
+            <button id="answer-4" class="btn" onclick="handleAnswerClick(event)"></button>
         </div>
+
         <div id="results-page" class="hide">
             <h2>All done!</h2>
             <p>Your final score is <span id="final-score"></span></p>
