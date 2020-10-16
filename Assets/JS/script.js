@@ -4,6 +4,7 @@ const answerOne = document.getElementById('answer-1');
 const answerTwo = document.getElementById('answer-2');
 const answerThree = document.getElementById('answer-3');
 const answerFour = document.getElementById('answer-4');
+const shuffledQuestionBank = shuffleQB();
 
 let secondsLeft = 60;
 let currentScore = 0;
@@ -16,7 +17,7 @@ function changeDiv(curr, next) {
 };
 
 // Handle Start button click
-function startGame() { // Handle Start button click
+function startGame() {
     changeDiv('start-page', 'question-container');
     nextQuestion();
     startTimer();
@@ -39,17 +40,17 @@ function startTimer() {
 function nextQuestion() {
     currentQ++;
     // If there are no more questions, end the game
-    if (currentQ === questionBank.length) {
+    if (currentQ === shuffledQuestionBank.length) {
         secondsLeft = 0;
         endGame();
     } else {
         // Otherwise populate questionEl
-        questionEl.textContent = questionBank[currentQ].question;
+        questionEl.textContent = shuffledQuestionBank[currentQ].question;
         // and populate answer buttons
         let arr = [answerOne, answerTwo, answerThree, answerFour];
         let i = 0;
         arr.forEach(element => {
-            element.textContent = questionBank[currentQ].answersArray[i].answer;
+            element.textContent = shuffledQuestionBank[currentQ].answersArray[i].answer;
             i++
         }, i);
     };
@@ -78,7 +79,7 @@ function handleAnswerClick(event) {
 };
 
 function getCorrectAnswer(currentQ) {
-    let arr = questionBank[currentQ].answersArray;
+    let arr = shuffledQuestionBank[currentQ].answersArray;
     // loop through answersArray, identify correct answer
     for (let j = 0; j < arr.length; j++) {
         if (arr[j].correct) {
@@ -94,20 +95,3 @@ function endGame() {
     // set currentScore = 0;
     changeDiv('question-container', 'results-page');
 }
-
-
-
-/*--------------------------------*/
-
-
-// const arr = [{age: 3, name: 'Jim'}, {age: 4, name: 'Joe'}]
-
-// arr.sort(function(current, next) {
-//     if (current.age > next.age) {
-//         return 1
-//     } else if (current.age < next.age) {
-//         return -1
-//     } else {
-//         return 0
-//     }
-// })

@@ -40,4 +40,22 @@ const questionBank = [
         { answer: '--', correct: false }]
     }
 
-]
+];
+
+function shuffleQB() {
+    // clone questionBank
+    let questionBankClone = questionBank;
+    // For each question, shuffle answer order
+    for (let i = 0; i < questionBankClone.length; i++) {
+
+        let answersArray = questionBankClone[i].answersArray;
+        answersArray.sort(() => {
+            return (Math.floor(Math.random() * 3) - 1);
+        });
+    }
+    // Shuffle question order
+    questionBankClone = questionBankClone.sort(() => {
+        return (Math.floor(Math.random() * 3) - 1);
+    });
+    return questionBankClone;
+};
