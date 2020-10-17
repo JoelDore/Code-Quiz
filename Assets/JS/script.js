@@ -109,9 +109,9 @@ function handleSubmit() {
     highScoresList.push({ initials: initials, score: finalScore });
     // sort array ascending
     highScoresList = highScoresList.sort((curr, next) => {
-        if (parseInt(curr.score) < parseInt(next.score)) {
+        if (curr.score < next.score) {
             return 1
-        } else if (parseInt(next.score) > parseInt(curr.score)) {
+        } else if (curr.score > next.score) {
             return -1
         } else {
             return 0
@@ -121,15 +121,4 @@ function handleSubmit() {
     localStorage.setItem('highScores', JSON.stringify(highScoresList))
     // go to highscores page
     window.location.href = './highscores.html';
-}
-
-function populateHighScores() {
-    // get array from storage, or initialize as empty array
-    let highScoresList = JSON.parse(localStorage.getItem('highScores')) || [];
-    // populate highscores list
-    let list = '';
-    highScoresList.forEach(score => {
-        list = list + '<p>' + score.initials + '  :  ' + score.score + '</p>';
-    });
-    highScoresListEl.innerHTML = list;
 }

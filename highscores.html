@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Assets/CSS/style.css">
 
-    <script defer src="Assets/JS/questions.js"></script>
     <script defer src="Assets/JS/script.js"></script>
+    <script defer src="Assets/JS/highscores.js"></script>
 </head>
 
 <body>
@@ -20,10 +20,10 @@
     </div>
     <div class="main">
         <h1>High Scores</h1>
-        <b onclick="populateHighScores()">Populate</b>
         <div id="highscores-list">
         </div>
-        <button class="btn" onclick="window.location.href='./index.html'">Restart</button>
+        <button class="btn" onclick="window.location.href='./index.html'">Try Again</button>
+        <button class="btn" onclick="resetScores()">Reset Scores</button>
     </div>
 
 </body>
