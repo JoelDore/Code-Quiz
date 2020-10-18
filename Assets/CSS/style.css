@@ -78,5 +78,9 @@ a:hover {color: darkgray;}
 
 /* Buttons arranged in column on xs devices */
 @media screen and (max-width: 576px) {
-    .btn {width: 80%;}
+    .btn {
+        width: 80%;
+        padding: 10px 15px;
+        margin: 5px 10px;
+    }
 }
